@@ -54,18 +54,18 @@ class HomeScreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     children: [
-                      "America",
+                      "USA",
                       "Japan",
+                      "India",
                       "Paris",
-                      "France",
-                      "America",
+                      "USA",
                       "Japan",
+                      "India",
                       "Paris",
-                      "France",
-                      "America",
+                      "USA",
                       "Japan",
-                      "Paris",
-                      "France"
+                      "India",
+                      "Paris"
                     ]
                         .map((city) => Container(
                             margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -130,8 +130,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           const Spacer(),
                           Padding(
-                            padding:
-                                const EdgeInsets.only(left: 20, bottom: 10),
+                            padding: const EdgeInsets.only(left: 12, bottom: 5),
                             child: SizedBox(
                               width: 500,
                               child: Row(
@@ -148,7 +147,6 @@ class HomeScreen extends StatelessWidget {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      const SizedBox(height: 5),
                                       Row(
                                         children: [
                                           const Icon(
@@ -160,21 +158,25 @@ class HomeScreen extends StatelessWidget {
                                             style: const TextStyle(
                                               color: Colors.white,
                                               fontSize: 16,
+                                              fontWeight: FontWeight.w400,
                                             ),
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(height: 10),
+                                      const SizedBox(height: 6),
                                       BlurWidget(
                                         child: Row(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            const Icon(Icons.star,
-                                                color: Colors.yellow),
+                                            const Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                            ),
                                             Text(
                                               destination.rating.toString(),
                                               style: const TextStyle(
-                                                  color: Colors.white),
+                                                color: Colors.white,
+                                              ),
                                             ),
                                           ],
                                         ),
