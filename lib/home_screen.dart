@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:myapp/travel_destination.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -89,138 +90,145 @@ class HomeScreen extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 3,
-                  itemBuilder: (context, index) => Container(
-                    width: double.maxFinite,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    margin: const EdgeInsets.only(top: 16),
-                    height: 300,
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                          image: AssetImage("assets/photo3.jpg"),
-                          fit: BoxFit.cover),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      children: [
-                        const Padding(
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                          child: Row(
-                            children: [
-                              BlurWidget(
-                                child: Text(
-                                  "\$400/Person",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              Spacer(),
-                              BlurWidget(
-                                child: Icon(
-                                  Icons.favorite,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
+                  itemCount: destinations.length,
+                  itemBuilder: (context, index) {
+                    final destination = destinations[index];
+                    return Container(
+                      width: double.maxFinite,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      margin: const EdgeInsets.only(top: 16),
+                      height: 300,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(destination.imagePath),
+                          fit: BoxFit.cover,
                         ),
-                        const Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20, bottom: 10),
-                          child: SizedBox(
-                            width: 500,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 8),
                             child: Row(
                               children: [
-                                const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Mount Fuji",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 28,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.location_on,
-                                          color: Colors.white,
-                                        ),
-                                        Text(
-                                          "Japan",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 16),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    BlurWidget(
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Icon(Icons.star,
-                                              color: Colors.yellow),
-                                          Text(
-                                            "4.5",
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                BlurWidget(
+                                  child: Text(
+                                    destination.price,
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
                                 ),
                                 const Spacer(),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 70, right: 10),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const HomeScreen()));
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 16, vertical: 8),
-                                      child: const Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text(
-                                            "Explore",
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                          ),
-                                          SizedBox(width: 8),
-                                          Icon(
-                                            Icons.arrow_right_alt,
-                                            color: Colors.black,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                const BlurWidget(
+                                  child: Icon(
+                                    Icons.favorite,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
+                          const Spacer(),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 20, bottom: 10),
+                            child: SizedBox(
+                              width: 500,
+                              child: Row(
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        destination.title,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 5),
+                                      Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.location_on,
+                                            color: Colors.white,
+                                          ),
+                                          Text(
+                                            destination.location,
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 10),
+                                      BlurWidget(
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            const Icon(Icons.star,
+                                                color: Colors.yellow),
+                                            Text(
+                                              destination.rating.toString(),
+                                              style: const TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Spacer(),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 70, right: 10),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const HomeScreen(),
+                                          ),
+                                        );
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16, vertical: 8),
+                                        child: const Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              "Explore",
+                                              style: TextStyle(
+                                                  color: Colors.black),
+                                            ),
+                                            SizedBox(width: 8),
+                                            Icon(
+                                              Icons.arrow_right_alt,
+                                              color: Colors.black,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
