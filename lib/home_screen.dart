@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                     final destination = destinations[index];
                     return Container(
                       width: double.maxFinite,
-                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      padding: const EdgeInsets.only(top: 8),
                       margin: const EdgeInsets.only(top: 16),
                       height: 300,
                       decoration: BoxDecoration(
@@ -105,22 +105,34 @@ class HomeScreen extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Column(
+                      child: Stack(
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 8),
+                              horizontal: 8,
+                            ),
                             child: Row(
                               children: [
-                                BlurWidget(
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 5),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black26,
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
                                   child: Text(
                                     destination.price,
                                     style: const TextStyle(color: Colors.white),
                                   ),
                                 ),
                                 const Spacer(),
-                                const BlurWidget(
-                                  child: Icon(
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black26,
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  child: const Icon(
                                     Icons.favorite,
                                     color: Colors.white,
                                   ),
@@ -128,104 +140,134 @@ class HomeScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const Spacer(),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 12, bottom: 5),
-                            child: SizedBox(
-                              width: 500,
-                              child: Row(
+                          Stack(
+                            children: [
+                              Column(
                                 children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        destination.title,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                  Container(
+                                    margin: const EdgeInsets.only(top: 162),
+                                    height: 130,
+                                    child: ClipRRect(
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(12),
+                                        bottomRight: Radius.circular(12),
                                       ),
-                                      Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.location_on,
-                                            color: Colors.white,
-                                          ),
-                                          Text(
-                                            destination.location,
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,
+                                      child: BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 1, sigmaY: 0.1),
+                                        child: Container(
+                                          height: 120,
+                                          decoration: BoxDecoration(
+                                            color:
+                                                Colors.black.withOpacity(0.1),
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              bottomLeft: Radius.circular(12),
+                                              bottomRight: Radius.circular(12),
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 6),
-                                      BlurWidget(
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            const Icon(
-                                              Icons.star,
-                                              color: Colors.yellow,
-                                            ),
-                                            Text(
-                                              destination.rating.toString(),
-                                              style: const TextStyle(
-                                                color: Colors.white,
+                                          padding: const EdgeInsets.all(12),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    destination.title,
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 24,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const Spacer(),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 70, right: 10),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const HomeScreen(),
+                                              Row(
+                                                children: [
+                                                  const Icon(
+                                                    Icons.location_on,
+                                                    color: Colors.white,
+                                                  ),
+                                                  Text(
+                                                    destination.location,
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Icon(
+                                                    Icons.star,
+                                                    color: Colors.yellow,
+                                                  ),
+                                                  Text(
+                                                    destination.rating
+                                                        .toString(),
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                  const Spacer(),
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const HomeScreen(),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.white,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(50),
+                                                      ),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 16,
+                                                          vertical: 8),
+                                                      child: const Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        children: [
+                                                          Text(
+                                                            "Explore",
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                          SizedBox(width: 8),
+                                                          Icon(
+                                                            Icons
+                                                                .arrow_right_alt,
+                                                            color: Colors.black,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
                                           ),
-                                        );
-                                      },
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                        ),
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 16, vertical: 8),
-                                        child: const Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Text(
-                                              "Explore",
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                            ),
-                                            SizedBox(width: 8),
-                                            Icon(
-                                              Icons.arrow_right_alt,
-                                              color: Colors.black,
-                                            ),
-                                          ],
                                         ),
                                       ),
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
+                            ],
                           ),
                         ],
                       ),
@@ -259,7 +301,6 @@ class BlurWidget extends StatelessWidget {
             decoration: const BoxDecoration(
               color: Colors.black12,
             ),
-            // Suggested code may be subject to a license. Learn more: ~LicenseLog:2044533583.
             child: child),
       ),
     );
