@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:myapp/home_detail_page.dart';
 import 'package:myapp/travel_destination.dart';
@@ -287,29 +286,61 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class BlurWidget extends StatelessWidget {
-  final Widget child;
-  const BlurWidget({
-    super.key,
-    required this.child,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(50),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaY: 20, sigmaX: 20),
-        child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-            decoration: const BoxDecoration(
-              color: Colors.black12,
-            ),
-            child: child),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(50),
+          child: BottomNavigationBar(
+            backgroundColor: Colors.red,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.black,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            items: [
+              BottomNavigationBarItem(
+                  icon: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.home, size: 30)),
+                  ),
+                  label: ''),
+              BottomNavigationBarItem(
+                  icon: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.search, size: 30)),
+                  ),
+                  label: ''),
+              BottomNavigationBarItem(
+                  icon: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.favorite, size: 30)),
+                  ),
+                  label: ''),
+              BottomNavigationBarItem(
+                  icon: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.person, size: 30)),
+                  ),
+                  label: ''),
+            ],
+          ),
+        ),
       ),
     );
   }
