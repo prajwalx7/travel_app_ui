@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:myapp/blur_widget.dart';
 import 'package:myapp/home_detail_page.dart';
 import 'package:myapp/travel_destination.dart';
 
@@ -9,8 +10,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: const Color(0xffEBECF9),
       body: SafeArea(
+        bottom: false,
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -48,8 +51,11 @@ class HomeScreen extends StatelessWidget {
                     Icon(Icons.settings)
                   ],
                 ),
+                const SizedBox(
+                  height: 8,
+                ),
                 SizedBox(
-                  height: 40,
+                  height: 35,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
@@ -70,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                         .map((city) => Container(
                             margin: const EdgeInsets.symmetric(horizontal: 8),
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 8),
+                                horizontal: 20, vertical: 8),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(16),
@@ -84,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 5,
                 ),
                 ListView.builder(
                   shrinkWrap: true,
@@ -152,121 +158,120 @@ class HomeScreen extends StatelessWidget {
                                         bottomLeft: Radius.circular(12),
                                         bottomRight: Radius.circular(12),
                                       ),
-                                      child: BackdropFilter(
-                                        filter: ImageFilter.blur(
-                                            sigmaX: 1, sigmaY: 1),
-                                        child: Container(
-                                          // height: 100,
-                                          decoration: BoxDecoration(
-                                            color:
-                                                Colors.black.withOpacity(0.1),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              bottomLeft: Radius.circular(12),
-                                              bottomRight: Radius.circular(12),
-                                            ),
+                                      child: Container(
+                                        // height: 100,
+                                        decoration: const BoxDecoration(
+                                          // color:
+                                          //     Colors.black.withOpacity(0.2),
+                                          gradient: LinearGradient(
+                                              colors: [
+                                                Colors.transparent,
+                                                Colors.black
+                                              ],
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter),
+                                          borderRadius: const BorderRadius.only(
+                                            bottomLeft: Radius.circular(12),
+                                            bottomRight: Radius.circular(12),
                                           ),
-                                          padding: const EdgeInsets.all(12),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.only(top: 8.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    Text(
-                                                      destination.title,
-                                                      style: const TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 24,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
+                                        ),
+                                        padding: const EdgeInsets.all(12),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 8.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    destination.title,
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 24,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    const Icon(
-                                                      Icons.location_on,
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Icon(
+                                                    Icons.location_on,
+                                                    color: Colors.white,
+                                                  ),
+                                                  Text(
+                                                    destination.location,
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Icon(
+                                                    Icons.star,
+                                                    color: Colors.yellow,
+                                                  ),
+                                                  Text(
+                                                    destination.rating
+                                                        .toString(),
+                                                    style: const TextStyle(
                                                       color: Colors.white,
                                                     ),
-                                                    Text(
-                                                      destination.location,
-                                                      style: const TextStyle(
+                                                  ),
+                                                  const Spacer(),
+                                                  GestureDetector(
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const HomeDetailPage(),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
                                                         color: Colors.white,
-                                                        fontSize: 16,
-                                                        fontWeight:
-                                                            FontWeight.w400,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(50),
                                                       ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    const Icon(
-                                                      Icons.star,
-                                                      color: Colors.yellow,
-                                                    ),
-                                                    Text(
-                                                      destination.rating
-                                                          .toString(),
-                                                      style: const TextStyle(
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                    const Spacer(),
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                const HomeDetailPage(),
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 16,
+                                                          vertical: 8),
+                                                      child: const Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        children: [
+                                                          Text(
+                                                            "Explore",
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black),
                                                           ),
-                                                        );
-                                                      },
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: Colors.white,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(50),
-                                                        ),
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .symmetric(
-                                                                horizontal: 16,
-                                                                vertical: 8),
-                                                        child: const Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.min,
-                                                          children: [
-                                                            Text(
-                                                              "Explore",
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .black),
-                                                            ),
-                                                            SizedBox(width: 8),
-                                                            Icon(
-                                                              Icons
-                                                                  .arrow_right_alt,
-                                                              color:
-                                                                  Colors.black,
-                                                            ),
-                                                          ],
-                                                        ),
+                                                          SizedBox(width: 8),
+                                                          Icon(
+                                                            Icons
+                                                                .arrow_right_alt,
+                                                            color: Colors.black,
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -286,60 +291,52 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(50),
-          child: BottomNavigationBar(
-            backgroundColor: Colors.red,
-            type: BottomNavigationBarType.fixed,
-            selectedItemColor: Colors.black,
-            unselectedItemColor: Colors.black,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            items: [
-              BottomNavigationBarItem(
-                  icon: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30)),
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.home, size: 30)),
-                  ),
-                  label: ''),
-              BottomNavigationBarItem(
-                  icon: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30)),
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.search, size: 30)),
-                  ),
-                  label: ''),
-              BottomNavigationBarItem(
-                  icon: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30)),
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.favorite, size: 30)),
-                  ),
-                  label: ''),
-              BottomNavigationBarItem(
-                  icon: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30)),
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.person, size: 30)),
-                  ),
-                  label: ''),
-            ],
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.transparent,
+        elevation: 0,
+        height: 100,
+        shape: const CircularNotchedRectangle(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: BlurWidget(
+            child: Container(
+              alignment: Alignment.center,
+              width: double.infinity,
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BottomBarItrem(),
+                  BottomBarItrem(),
+                  BottomBarItrem(),
+                  BottomBarItrem(),
+                ],
+              ),
+            ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class BottomBarItrem extends StatelessWidget {
+  const BottomBarItrem({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: Container(
+        padding: const EdgeInsets.all(18),
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white,
+        ),
+        child: const Icon(
+          size: 24,
+          Icons.home,
+          color: Colors.black,
         ),
       ),
     );
