@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:myapp/blur_widget.dart';
+import 'package:myapp/bottom_bar.dart';
 import 'package:myapp/home_detail_page.dart';
 import 'package:myapp/travel_destination.dart';
 
@@ -305,38 +306,14 @@ class HomeScreen extends StatelessWidget {
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  BottomBarItrem(),
-                  BottomBarItrem(),
-                  BottomBarItrem(),
-                  BottomBarItrem(),
+                  BottomBarItrem(icon: Icons.home_outlined),
+                  BottomBarItrem(icon: Icons.favorite_outline),
+                  BottomBarItrem(icon: Icons.airplane_ticket_outlined),
+                  BottomBarItrem(icon: Icons.person_outline),
                 ],
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class BottomBarItrem extends StatelessWidget {
-  const BottomBarItrem({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-        padding: const EdgeInsets.all(18),
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-        ),
-        child: const Icon(
-          size: 24,
-          Icons.home,
-          color: Colors.black,
         ),
       ),
     );
