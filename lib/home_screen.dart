@@ -22,37 +22,49 @@ class HomeScreen extends StatelessWidget {
               children: [
                 const Row(
                   children: [
-                    Text(
-                      "Discovery",
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Discovery",
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          "You're in India",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ],
                     ),
                     Spacer(),
-                    CircleAvatar(
-                      radius: 25,
-                      backgroundImage: AssetImage("assets/avatar.jpg"),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 14,
-                ),
-                const Row(
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-
-                        hintText: "Search",
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: Colors.black,
+                    Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 25,
+                          backgroundImage: AssetImage("assets/avatar.jpg"),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
+                const SizedBox(height: 16),
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Where do you want to go',
+                    prefixIcon: const Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                  ),
+                ),
                 const SizedBox(
-                  height: 8,
+                  height: 12,
                 ),
                 SizedBox(
                   height: 35,
