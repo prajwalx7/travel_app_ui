@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:myapp/blur_widget.dart';
 import 'package:myapp/bottom_bar.dart';
@@ -21,22 +20,18 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                const Row(
                   children: [
-                    Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(28)),
-                        child: const Icon(Icons.sort)),
-                    const Spacer(),
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(28)),
-                      child: const Icon(Icons.search),
+                    Text(
+                      "Discovery",
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
+                    Spacer(),
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundImage: AssetImage("assets/avatar.jpg"),
+                    )
                   ],
                 ),
                 const SizedBox(
@@ -44,12 +39,16 @@ class HomeScreen extends StatelessWidget {
                 ),
                 const Row(
                   children: [
-                    Text(
-                      "Find the trip \nof your dreams",
-                      style: TextStyle(fontSize: 22),
+                    TextField(
+                      decoration: InputDecoration(
+
+                        hintText: "Search",
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
-                    Spacer(),
-                    Icon(Icons.settings)
                   ],
                 ),
                 const SizedBox(
@@ -160,10 +159,7 @@ class HomeScreen extends StatelessWidget {
                                         bottomRight: Radius.circular(12),
                                       ),
                                       child: Container(
-                                        // height: 100,
                                         decoration: const BoxDecoration(
-                                          // color:
-                                          //     Colors.black.withOpacity(0.2),
                                           gradient: LinearGradient(
                                               colors: [
                                                 Colors.transparent,
@@ -171,7 +167,7 @@ class HomeScreen extends StatelessWidget {
                                               ],
                                               begin: Alignment.topCenter,
                                               end: Alignment.bottomCenter),
-                                          borderRadius: const BorderRadius.only(
+                                          borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(12),
                                             bottomRight: Radius.circular(12),
                                           ),
