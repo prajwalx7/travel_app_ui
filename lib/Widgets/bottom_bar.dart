@@ -2,28 +2,29 @@ import 'package:flutter/material.dart';
 
 class BottomBarItrem extends StatelessWidget {
   final IconData icon;
-  final Function OnTap;
+  final Function onTap;
+  final bool isSelected;
 
-  const BottomBarItrem({
-    super.key,
-    required this.icon,
-    required this.OnTap,
-  });
+  const BottomBarItrem(
+      {super.key,
+      required this.icon,
+      required this.onTap,
+      required this.isSelected});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => OnTap(),
+      onTap: () => onTap(),
       child: Container(
         padding: const EdgeInsets.all(18),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Colors.white,
+          color: isSelected ? Colors.white : Colors.black12,
         ),
         child: Icon(
           icon,
           size: 24,
-          color: Colors.black,
+          color: isSelected ? Colors.black : Colors.white,
         ),
       ),
     );

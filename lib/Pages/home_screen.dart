@@ -7,8 +7,21 @@ import 'package:myapp/Widgets/bottom_bar.dart';
 import 'package:myapp/Pages/home_detail_screen.dart';
 import 'package:myapp/Data/travel_destination.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -318,37 +331,50 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   BottomBarItrem(
-                      icon: Icons.home_outlined,
-                      OnTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomeScreen()));
-                      }),
+                    icon: Icons.home_outlined,
+                    onTap: () {
+                      _onItemTapped(0);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()),
+                      );
+                    },
+                    isSelected: _selectedIndex == 0,
+                  ),
                   BottomBarItrem(
-                      icon: Icons.favorite_outline,
-                      OnTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const FavouriteScreen()));
-                      }),
+                    icon: Icons.favorite_outline,
+                    onTap: () {
+                      _onItemTapped(1);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const FavouriteScreen()));
+                    },
+                    isSelected: _selectedIndex == 1,
+                  ),
                   BottomBarItrem(
-                      icon: Icons.airplane_ticket_outlined,
-                      OnTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const TicketsScreen()));
-                      }),
+                    icon: Icons.airplane_ticket_outlined,
+                    onTap: () {
+                      _onItemTapped(2);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const TicketsScreen()));
+                    },
+                    isSelected: _selectedIndex == 2,
+                  ),
                   BottomBarItrem(
-                      icon: Icons.person_2_outlined,
-                      OnTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const UserProfile()));
-                      }),
+                    icon: Icons.person_2_outlined,
+                    onTap: () {
+                      _onItemTapped(3);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const UserProfile()));
+                    },
+                    isSelected: _selectedIndex == 3,
+                  ),
                 ],
               ),
             ),
