@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/blur_widget.dart';
-import 'package:myapp/bottom_bar.dart';
-import 'package:myapp/home_detail_page.dart';
-import 'package:myapp/travel_destination.dart';
+import 'package:myapp/Pages/favourite_screen.dart';
+import 'package:myapp/Pages/tickets_screen.dart';
+import 'package:myapp/Pages/user_profile_screen.dart';
+import 'package:myapp/Widgets/blur_widget.dart';
+import 'package:myapp/Widgets/bottom_bar.dart';
+import 'package:myapp/Pages/home_detail_screen.dart';
+import 'package:myapp/Data/travel_destination.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -75,15 +78,15 @@ class HomeScreen extends StatelessWidget {
                       "USA",
                       "Japan",
                       "India",
-                      "Paris",
+                      "Europe",
                       "USA",
                       "Japan",
                       "India",
-                      "Paris",
+                      "Europe",
                       "USA",
                       "Japan",
                       "India",
-                      "Paris"
+                      "Europe"
                     ]
                         .map((city) => Container(
                             margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -311,13 +314,41 @@ class HomeScreen extends StatelessWidget {
             child: Container(
               alignment: Alignment.center,
               width: double.infinity,
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  BottomBarItrem(icon: Icons.home_outlined),
-                  BottomBarItrem(icon: Icons.favorite_outline),
-                  BottomBarItrem(icon: Icons.airplane_ticket_outlined),
-                  BottomBarItrem(icon: Icons.person_outline),
+                  BottomBarItrem(
+                      icon: Icons.home_outlined,
+                      OnTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomeScreen()));
+                      }),
+                  BottomBarItrem(
+                      icon: Icons.favorite_outline,
+                      OnTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const FavouriteScreen()));
+                      }),
+                  BottomBarItrem(
+                      icon: Icons.airplane_ticket_outlined,
+                      OnTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const TicketsScreen()));
+                      }),
+                  BottomBarItrem(
+                      icon: Icons.person_2_outlined,
+                      OnTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const UserProfile()));
+                      }),
                 ],
               ),
             ),
