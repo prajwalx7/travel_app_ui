@@ -5,8 +5,14 @@ class HomeDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text("Detail View"),
-    );
+    return Scaffold(
+        backgroundColor: const Color(0xffEBECF9),
+        appBar: AppBar(
+          title: const Text("Details"),
+          centerTitle: true,
+        ),
+        body: Column(
+          children: [Container()],
+        ));
   }
 }

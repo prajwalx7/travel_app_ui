@@ -5,8 +5,32 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("Profile")),
+    return Scaffold(
+      backgroundColor: const Color(0xffEBECF9),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
+      body: const Padding(
+        padding: EdgeInsets.only(top: 10.0),
+        child: Column(
+          children: [
+            Center(
+              child: CircleAvatar(
+                radius: 60,
+                backgroundImage: AssetImage("assets/avatar.jpg"),
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              "Prajwal Dudhatkar",
+              style: TextStyle(fontSize: 18),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

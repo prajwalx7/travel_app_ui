@@ -5,8 +5,13 @@ class FavouriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("Favourites")),
+    return Scaffold(
+      backgroundColor: const Color(0xffEBECF9),
+      appBar: AppBar(
+        title: const Text("Favourites"),
+        centerTitle: true,
+      ),
+      body: const Center(child: Text("No Favourites Yet!")),
     );
   }
 }

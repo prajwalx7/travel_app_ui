@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:myapp/Pages/favourite_screen.dart';
 import 'package:myapp/Pages/tickets_screen.dart';
 import 'package:myapp/Pages/user_profile_screen.dart';
@@ -44,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           "Discovery",
                           style: TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.bold),
+                              fontSize: 26, fontWeight: FontWeight.bold),
                         ),
                         Text(
                           "You're in India",
@@ -70,7 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 TextField(
                   decoration: InputDecoration(
                     hintText: 'Where do you want to go',
-                    prefixIcon: const Icon(Icons.search),
+                    prefixIcon: const Icon(
+                      Iconsax.search_normal_1,
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
@@ -167,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     borderRadius: BorderRadius.circular(50),
                                   ),
                                   child: const Icon(
-                                    Icons.favorite,
+                                    Iconsax.heart,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -225,7 +228,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                               Row(
                                                 children: [
                                                   const Icon(
-                                                    Icons.location_on,
+                                                    Iconsax.location,
+                                                    size: 18,
                                                     color: Colors.white,
                                                   ),
                                                   Text(
@@ -242,12 +246,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                               Row(
                                                 children: [
                                                   const Icon(
-                                                    Icons.star,
+                                                    Iconsax.star1,
+                                                    size: 22,
                                                     color: Colors.yellow,
                                                   ),
                                                   Text(
-                                                    destination.rating
-                                                        .toString(),
+                                                    destination.rating,
                                                     style: const TextStyle(
                                                       color: Colors.white,
                                                     ),
@@ -286,8 +290,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                           ),
                                                           SizedBox(width: 8),
                                                           Icon(
-                                                            Icons
-                                                                .arrow_right_alt,
+                                                            Iconsax
+                                                                .arrow_circle_right4,
+                                                            size: 20,
                                                             color: Colors.black,
                                                           ),
                                                         ],
@@ -331,7 +336,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   BottomBarItrem(
-                    icon: Icons.home_outlined,
+                    icon: Iconsax.home,
                     onTap: () {
                       _onItemTapped(0);
                       Navigator.push(
@@ -343,7 +348,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     isSelected: _selectedIndex == 0,
                   ),
                   BottomBarItrem(
-                    icon: Icons.favorite_outline,
+                    icon: Iconsax.heart,
                     onTap: () {
                       _onItemTapped(1);
                       Navigator.push(
@@ -354,7 +359,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     isSelected: _selectedIndex == 1,
                   ),
                   BottomBarItrem(
-                    icon: Icons.airplane_ticket_outlined,
+                    icon: Iconsax.ticket,
                     onTap: () {
                       _onItemTapped(2);
                       Navigator.push(
@@ -365,7 +370,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     isSelected: _selectedIndex == 2,
                   ),
                   BottomBarItrem(
-                    icon: Icons.person_2_outlined,
+                    icon: Iconsax.user,
                     onTap: () {
                       _onItemTapped(3);
                       Navigator.push(
