@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:myapp/Data/travel_destination.dart';
 import 'package:myapp/Pages/home_screen.dart';
 
@@ -26,7 +27,7 @@ class HomeDetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: const Icon(Icons.arrow_back),
+                  icon: const Icon(Iconsax.arrow_left),
                   color: Colors.white,
                   onPressed: () {
                     Navigator.pop(
@@ -37,14 +38,18 @@ class HomeDetailPage extends StatelessWidget {
                     );
                   },
                 ),
-                const Icon(Icons.notifications, color: Colors.white),
+                IconButton(
+                  icon: const Icon(Iconsax.notification),
+                  color: Colors.white,
+                  onPressed: () {},
+                ),
               ],
             ),
           ),
           DraggableScrollableSheet(
             initialChildSize: 0.2,
             minChildSize: 0.2,
-            maxChildSize: 0.6,
+            maxChildSize: 0.8,
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
                 padding: const EdgeInsets.all(16),
@@ -60,13 +65,26 @@ class HomeDetailPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        destination.title,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            destination.title,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const Spacer(),
+                          Text(
+                            destination.price,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 8),
                       Row(
@@ -86,9 +104,9 @@ class HomeDetailPage extends StatelessWidget {
                         style: const TextStyle(color: Colors.white),
                       ),
                       const SizedBox(height: 8),
-                      const Text(
-                        'Arenal Volcano is an active andesitic stratovolcano in north-western Costa Rica around 90 km northwest of San José, in the province of Alajuela, canton of San Carlos, and district of La Fortuna.',
-                        style: TextStyle(color: Colors.white),
+                      Text(
+                        destination.description,
+                        style: const TextStyle(color: Colors.white),
                       ),
                       const SizedBox(height: 16),
                       Row(
@@ -117,29 +135,39 @@ class HomeDetailPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 80),
                       Row(
                         children: [
-                          Text(
-                            destination.price,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const Spacer(),
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              foregroundColor: Colors.black,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                minimumSize: const Size(60, 50),
+                                backgroundColor: Colors.white,
+                                foregroundColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              child: const Text(
+                                'Book Now',
+                                style: TextStyle(fontSize: 18),
                               ),
                             ),
-                            child: const Text('Book Now'),
                           ),
+                          const SizedBox(
+                            width: 16,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Iconsax.heart),
+                            ),
+                          )
                         ],
                       ),
                     ],
