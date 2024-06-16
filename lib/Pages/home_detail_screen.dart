@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myapp/Data/travel_destination.dart';
 import 'package:myapp/Pages/home_screen.dart';
+import 'package:myapp/Widgets/review_bar.dart';
 
 class HomeDetailPage extends StatelessWidget {
   const HomeDetailPage({super.key, required this.destination});
@@ -109,30 +110,10 @@ class HomeDetailPage extends StatelessWidget {
                         style: const TextStyle(color: Colors.white),
                       ),
                       const SizedBox(height: 16),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: List.generate(
-                              5,
-                              (index) => const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 2.0),
-                                child: CircleAvatar(
-                                  radius: 10,
-                                  backgroundImage:
-                                      AssetImage('assets/avatar.jpg'),
-                                ),
-                              ),
-                            ),
-                          ),
-                          TextButton.icon(
-                            onPressed: () {},
-                            icon: const Icon(Icons.group, color: Colors.white),
-                            label: const Text(
-                              'Reviews',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
+                          ReviewBar(),
                         ],
                       ),
                       const SizedBox(height: 80),
