@@ -50,12 +50,12 @@ class HomeDetailPage extends StatelessWidget {
           DraggableScrollableSheet(
             initialChildSize: 0.2,
             minChildSize: 0.2,
-            maxChildSize: 0.8,
+            maxChildSize: 0.7,
             builder: (BuildContext context, ScrollController scrollController) {
               return Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.7),
+                  color: Colors.black.withOpacity(0.8),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30),
@@ -116,7 +116,7 @@ class HomeDetailPage extends StatelessWidget {
                           ReviewBar(),
                         ],
                       ),
-                      const SizedBox(height: 80),
+                      const SizedBox(height: 10),
                       Row(
                         children: [
                           Expanded(
