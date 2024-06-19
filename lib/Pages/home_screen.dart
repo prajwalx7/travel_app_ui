@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:myapp/Pages/favourite_screen.dart';
-import 'package:myapp/Pages/tickets_screen.dart';
-import 'package:myapp/Pages/user_profile_screen.dart';
 import 'package:myapp/Widgets/blur_widget.dart';
 import 'package:myapp/Widgets/bottom_bar.dart';
 import 'package:myapp/Pages/home_detail_screen.dart';
@@ -342,11 +339,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Iconsax.home,
                     onTap: () {
                       _onItemTapped(0);
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()),
-                      );
+                      Navigator.pushReplacementNamed(context, '/homescreen');
                     },
                     isSelected: _selectedIndex == 0,
                   ),
@@ -354,10 +347,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Iconsax.heart,
                     onTap: () {
                       _onItemTapped(1);
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const FavouriteScreen()));
+                      Navigator.pushReplacementNamed(
+                          context, '/favouritesscreen');
                     },
                     isSelected: _selectedIndex == 1,
                   ),
@@ -365,10 +356,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Iconsax.ticket,
                     onTap: () {
                       _onItemTapped(2);
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const TicketsScreen()));
+                      Navigator.pushReplacementNamed(context, '/ticketsscreen');
                     },
                     isSelected: _selectedIndex == 2,
                   ),
@@ -376,10 +364,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Iconsax.user,
                     onTap: () {
                       _onItemTapped(3);
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const UserProfile()));
+                      Navigator.pushReplacementNamed(
+                          context, '/userprofilescreen');
                     },
                     isSelected: _selectedIndex == 3,
                   ),
