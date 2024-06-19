@@ -263,7 +263,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         context,
                                                         MaterialPageRoute(
                                                           builder: (context) =>
-                                                              HomeDetailPage(destination: destination,),
+                                                              HomeDetailPage(
+                                                            destination:
+                                                                destination,
+                                                          ),
                                                         ),
                                                       );
                                                     },
@@ -339,7 +342,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Iconsax.home,
                     onTap: () {
                       _onItemTapped(0);
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const HomeScreen()),
@@ -351,7 +354,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Iconsax.heart,
                     onTap: () {
                       _onItemTapped(1);
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const FavouriteScreen()));
@@ -362,7 +365,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Iconsax.ticket,
                     onTap: () {
                       _onItemTapped(2);
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const TicketsScreen()));
@@ -373,7 +376,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Iconsax.user,
                     onTap: () {
                       _onItemTapped(3);
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const UserProfile()));
