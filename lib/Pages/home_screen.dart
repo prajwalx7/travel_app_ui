@@ -329,6 +329,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: BlurWidget(
+            borderRadius: BorderRadius.circular(50),
             child: Container(
               alignment: Alignment.center,
               width: double.infinity,
@@ -338,34 +339,30 @@ class _HomeScreenState extends State<HomeScreen> {
                   BottomBarItrem(
                     icon: Iconsax.home,
                     onTap: () {
-                      _onItemTapped(0);
-                      Navigator.pushReplacementNamed(context, '/homescreen');
+                      if (_selectedIndex == 0) return;
+
+                      Navigator.pushNamed(context, '/homescreen');
                     },
                     isSelected: _selectedIndex == 0,
                   ),
                   BottomBarItrem(
                     icon: Iconsax.heart,
                     onTap: () {
-                      _onItemTapped(1);
-                      Navigator.pushReplacementNamed(
-                          context, '/favouritesscreen');
+                      Navigator.pushNamed(context, '/favouritesscreen');
                     },
                     isSelected: _selectedIndex == 1,
                   ),
                   BottomBarItrem(
                     icon: Iconsax.ticket,
                     onTap: () {
-                      _onItemTapped(2);
-                      Navigator.pushReplacementNamed(context, '/ticketsscreen');
+                      Navigator.pushNamed(context, '/ticketsscreen');
                     },
                     isSelected: _selectedIndex == 2,
                   ),
                   BottomBarItrem(
                     icon: Iconsax.user,
                     onTap: () {
-                      _onItemTapped(3);
-                      Navigator.pushReplacementNamed(
-                          context, '/userprofilescreen');
+                      Navigator.pushNamed(context, '/userprofilescreen');
                     },
                     isSelected: _selectedIndex == 3,
                   ),
