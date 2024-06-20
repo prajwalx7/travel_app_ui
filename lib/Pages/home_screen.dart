@@ -12,13 +12,40 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  final _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  late AnimationController _controller;
+  late Animation<Offset> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1500),
+      vsync: this,
+    );
+
+    _animation = Tween<Offset>(
+      begin: const Offset(0, 1),
+      end: const Offset(0, 0),
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInBack,
+    ))
+      ..addListener(() {
+        setState(() {});
+      });
+
+    // Start the animation
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -321,52 +348,55 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.transparent,
-        elevation: 0,
-        height: 100,
-        shape: const CircularNotchedRectangle(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: BlurWidget(
-            borderRadius: BorderRadius.circular(50),
-            child: Container(
-              alignment: Alignment.center,
-              width: double.infinity,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  BottomBarItrem(
-                    icon: Iconsax.home,
-                    onTap: () {
-                      if (_selectedIndex == 0) return;
+      bottomNavigationBar: SlideTransition(
+        position: _animation,
+        child: BottomAppBar(
+          color: Colors.transparent,
+          elevation: 0,
+          height: 100,
+          shape: const CircularNotchedRectangle(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: BlurWidget(
+              borderRadius: BorderRadius.circular(50),
+              child: Container(
+                alignment: Alignment.center,
+                width: double.infinity,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    BottomBarItrem(
+                      icon: Iconsax.home,
+                      onTap: () {
+                        if (_selectedIndex == 0) return;
 
-                      Navigator.pushNamed(context, '/homescreen');
-                    },
-                    isSelected: _selectedIndex == 0,
-                  ),
-                  BottomBarItrem(
-                    icon: Iconsax.heart,
-                    onTap: () {
-                      Navigator.pushNamed(context, '/favouritesscreen');
-                    },
-                    isSelected: _selectedIndex == 1,
-                  ),
-                  BottomBarItrem(
-                    icon: Iconsax.ticket,
-                    onTap: () {
-                      Navigator.pushNamed(context, '/ticketsscreen');
-                    },
-                    isSelected: _selectedIndex == 2,
-                  ),
-                  BottomBarItrem(
-                    icon: Iconsax.user,
-                    onTap: () {
-                      Navigator.pushNamed(context, '/userprofilescreen');
-                    },
-                    isSelected: _selectedIndex == 3,
-                  ),
-                ],
+                        Navigator.pushNamed(context, '/homescreen');
+                      },
+                      isSelected: _selectedIndex == 0,
+                    ),
+                    BottomBarItrem(
+                      icon: Iconsax.heart,
+                      onTap: () {
+                        Navigator.pushNamed(context, '/favouritesscreen');
+                      },
+                      isSelected: _selectedIndex == 1,
+                    ),
+                    BottomBarItrem(
+                      icon: Iconsax.ticket,
+                      onTap: () {
+                        Navigator.pushNamed(context, '/ticketsscreen');
+                      },
+                      isSelected: _selectedIndex == 2,
+                    ),
+                    BottomBarItrem(
+                      icon: Iconsax.user,
+                      onTap: () {
+                        Navigator.pushNamed(context, '/userprofilescreen');
+                      },
+                      isSelected: _selectedIndex == 3,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

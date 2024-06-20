@@ -22,7 +22,7 @@ class HomeDetailPage extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 30,
+            top: 45,
             left: 16,
             right: 16,
             child: Row(
@@ -49,9 +49,9 @@ class HomeDetailPage extends StatelessWidget {
             ),
           ),
           DraggableScrollableSheet(
-            initialChildSize: 0.2,
-            minChildSize: 0.2,
-            maxChildSize: 0.7,
+            initialChildSize: 0.15,
+            minChildSize: 0.15,
+            maxChildSize: 0.6,
             builder: (BuildContext context, ScrollController scrollController) {
               return BlurWidget(
                 padding: EdgeInsets.zero,
@@ -111,26 +111,27 @@ class HomeDetailPage extends StatelessWidget {
                           destination.location,
                           style: const TextStyle(color: Colors.white),
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 25),
                         Text(
                           destination.description,
                           style: const TextStyle(color: Colors.white),
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 20),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             ReviewBar(),
                           ],
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(height: 50),
                         Row(
                           children: [
                             Expanded(
                               child: ElevatedButton(
                                 onPressed: () {},
                                 style: ElevatedButton.styleFrom(
-                                  minimumSize: const Size(60, 50),
+                                  elevation: 0.0,
+                                  minimumSize: const Size(70, 50),
                                   backgroundColor: Colors.white,
                                   foregroundColor: Colors.black,
                                   shape: RoundedRectangleBorder(
@@ -153,7 +154,10 @@ class HomeDetailPage extends StatelessWidget {
                               ),
                               child: IconButton(
                                 onPressed: () {},
-                                icon: const Icon(Iconsax.heart),
+                                icon: const Icon(
+                                  Iconsax.heart,
+                                  color: Colors.red,
+                                ),
                               ),
                             )
                           ],
