@@ -32,7 +32,7 @@ class TicketData extends StatelessWidget {
               const Row(
                 children: [
                   Text(
-                    'NYC',
+                    'BOM',
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
@@ -46,7 +46,7 @@ class TicketData extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: 8.0),
                     child: Text(
-                      'LDN',
+                      'BLR',
                       style: TextStyle(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
@@ -56,7 +56,7 @@ class TicketData extends StatelessWidget {
             ],
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 20.0),
+            padding: EdgeInsets.only(top: 12.0),
             child: Text(
               'Flight Ticket',
               style: TextStyle(
@@ -66,38 +66,43 @@ class TicketData extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 25.0),
+            padding: const EdgeInsets.only(top: 10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ticketDetailsWidget(
                     'Passengers', 'Prajwal Dudhatkar', 'Date', '22-08-2024'),
                 Padding(
-                  padding: const EdgeInsets.only(top: 12.0, right: 52.0),
+                  padding: const EdgeInsets.only(top: 8.0, right: 52.0),
                   child:
                       ticketDetailsWidget('Flight', '76836A45', 'Gate', '66B'),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 12.0, right: 53.0),
+                  padding: const EdgeInsets.only(top: 8.0, right: 53.0),
                   child:
                       ticketDetailsWidget('Class', 'Business', 'Seat', '21B'),
                 ),
               ],
             ),
           ),
+          const SizedBox(
+            height: 5,
+          ),
+          const Divider(),
           Padding(
-            padding: const EdgeInsets.only(top: 80.0, left: 30.0, right: 30.0),
+            padding: const EdgeInsets.only(top: 20.0, left: 30.0, right: 30.0),
             child: Container(
               width: 250.0,
-              height: 60.0,
+              height: 180.0,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/barcode.jpg'), fit: BoxFit.cover),
+                    image: AssetImage('assets/barcode.jpg'),
+                    fit: BoxFit.contain),
               ),
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 10.0, left: 100.0, right: 75.0),
+            padding: EdgeInsets.only(top: 5.0, left: 100.0, right: 75.0),
             child: Text(
               '9230 2884 5163',
               style: TextStyle(

@@ -10,6 +10,7 @@ class TicketsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xffEBECF9),
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         title: const Text("Tickets"),
         centerTitle: true,
       ),
