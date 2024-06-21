@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/Data/ticket_data.dart';
+import 'package:ticket_widget/ticket_widget.dart';
 
 class TicketsScreen extends StatelessWidget {
   const TicketsScreen({super.key});
@@ -11,7 +13,15 @@ class TicketsScreen extends StatelessWidget {
         title: const Text("Tickets"),
         centerTitle: true,
       ),
-      body: const Center(child: Text("No Tickets Booked Yet")),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 22),
+        child: TicketWidget(
+          isCornerRounded: true,
+          width: 350,
+          height: 500,
+          child: TicketData(),
+        ),
+      ),
     );
   }
 }

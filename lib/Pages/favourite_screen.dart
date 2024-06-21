@@ -11,7 +11,9 @@ class FavouriteScreen extends StatelessWidget {
         title: const Text("Favourites"),
         centerTitle: true,
       ),
-      body: const Center(child: Text("No Favourites Yet!")),
+      body: const Center(
+        child: Text("No Favourites yet"),
+      ),
     );
   }
 }

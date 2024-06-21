@@ -128,7 +128,9 @@ class HomeDetailPage extends StatelessWidget {
                           children: [
                             Expanded(
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/bookingpage');
+                                },
                                 style: ElevatedButton.styleFrom(
                                   elevation: 0.0,
                                   minimumSize: const Size(70, 50),

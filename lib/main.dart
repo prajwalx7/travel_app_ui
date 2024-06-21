@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/Pages/booking_page.dart';
 import 'package:myapp/Pages/favourite_screen.dart';
 import 'package:myapp/Pages/home_screen.dart';
 import 'package:myapp/Pages/tickets_screen.dart';
@@ -25,6 +26,7 @@ class TravelApp extends StatelessWidget {
         '/favouritesscreen': (context) => const FavouriteScreen(),
         '/ticketsscreen': (context) => const TicketsScreen(),
         '/userprofilescreen': (context) => const UserProfile(),
+        '/bookingpage' : (context) => const BookingPage(),
       },
     );
   }
