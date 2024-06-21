@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:myapp/Pages/tickets_screen.dart';
 
 class BookingPage extends StatefulWidget {
   const BookingPage({super.key});
@@ -31,6 +32,62 @@ class _BookingPageState extends State<BookingPage> {
         }
       });
     }
+  }
+
+  void _showBookingDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                height: 5,
+              ),
+              const Text(
+                "Yay! Tickets Confirmed.",
+                style: TextStyle(color: Colors.green),
+              ),
+              Lottie.network(
+                "https://lottie.host/9601523a-2160-4cd3-bcdc-bf43dad98cd2/Fj6IHe8bB3.json",
+                height: 150,
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                "You can check your ticket in the tickets section",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (context) => const TicketsScreen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  elevation: 0.0,
+                  backgroundColor: Colors.black87,
+                  foregroundColor: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Text("Go to Tickets"),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -185,7 +242,7 @@ class _BookingPageState extends State<BookingPage> {
                           });
                         },
                       ),
-                      const SizedBox(width: 10),
+                      const SizedBox(width: 5),
                       _buildCounterButton(
                         icon: Icons.remove,
                         onPressed: () {
@@ -219,7 +276,9 @@ class _BookingPageState extends State<BookingPage> {
                   height: 80,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _showBookingDialog(context);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.black87,
                     foregroundColor: Colors.white,
