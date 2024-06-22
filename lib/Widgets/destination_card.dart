@@ -61,9 +61,7 @@ class DestinationCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: Icon(
-                          isFavorite
-                              ? Icons.favorite
-                              : Icons.favorite_border_outlined,
+                          isFavorite ? Iconsax.heart5 : Iconsax.heart,
                           color: isFavorite ? Colors.red : Colors.white,
                         ),
                       ),

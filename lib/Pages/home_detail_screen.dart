@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myapp/Data/travel_destination.dart';
@@ -30,22 +32,34 @@ class HomeDetailPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(
-                  icon: const Icon(Iconsax.arrow_left),
-                  color: Colors.white,
-                  onPressed: () {
-                    Navigator.pop(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
-                      ),
-                    );
-                  },
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.black.withOpacity(0.1),
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Iconsax.arrow_left),
+                    color: Colors.white,
+                    onPressed: () {
+                      Navigator.pop(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                      );
+                    },
+                  ),
                 ),
-                IconButton(
-                  icon: const Icon(Iconsax.notification),
-                  color: Colors.white,
-                  onPressed: () {},
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.black.withOpacity(0.1),
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Iconsax.notification),
+                    color: Colors.white,
+                    onPressed: () {},
+                  ),
                 ),
               ],
             ),
@@ -125,7 +139,7 @@ class HomeDetailPage extends StatelessWidget {
                             ReviewBar(),
                           ],
                         ),
-                        const SizedBox(height: 50),
+                        const SizedBox(height: 80),
                         Row(
                           children: [
                             Expanded(
