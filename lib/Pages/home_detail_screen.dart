@@ -4,6 +4,8 @@ import 'package:myapp/Data/travel_destination.dart';
 import 'package:myapp/Pages/home_screen.dart';
 import 'package:myapp/Widgets/blur_widget.dart';
 import 'package:myapp/Widgets/review_bar.dart';
+import 'package:provider/provider.dart';
+import '../Pages/favourites_provider.dart';
 
 class HomeDetailPage extends StatelessWidget {
   const HomeDetailPage({super.key, required this.destination});
@@ -149,19 +151,48 @@ class HomeDetailPage extends StatelessWidget {
                             const SizedBox(
                               width: 16,
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Iconsax.heart,
-                                  color: Colors.red,
-                                ),
-                              ),
-                            )
+                            Consumer<FavoritesProvider>(
+                              builder: (context, favoritesProvider, child) {
+                                final isFavorite =
+                                    favoritesProvider.isFavorite(destination);
+                                return GestureDetector(
+                                  onTap: () {
+                                    if (isFavorite) {
+                                      favoritesProvider
+                                          .removeFavorite(destination);
+                                    } else {
+                                      favoritesProvider
+                                          .addFavorite(destination);
+                                    }
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                    child: IconButton(
+                                      onPressed: () {
+                                        if (isFavorite) {
+                                          favoritesProvider
+                                              .removeFavorite(destination);
+                                        } else {
+                                          favoritesProvider
+                                              .addFavorite(destination);
+                                        }
+                                      },
+                                      icon: Icon(
+                                        isFavorite
+                                            ? Iconsax.heart5
+                                            : Iconsax.heart,
+                                        color: isFavorite
+                                            ? Colors.red
+                                            : Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         ),
                       ],

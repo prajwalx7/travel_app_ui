@@ -38,6 +38,7 @@ dependencies:
   iconsax: ^0.0.8
   ticket_widget: ^1.0.2
   lottie: ^3.1.2
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
