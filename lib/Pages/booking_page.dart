@@ -52,8 +52,8 @@ class _BookingPageState extends State<BookingPage> {
                 "Yay! Tickets Confirmed.",
                 style: TextStyle(color: Colors.green),
               ),
-              Lottie.network(
-                "https://lottie.host/9601523a-2160-4cd3-bcdc-bf43dad98cd2/Fj6IHe8bB3.json",
+              Lottie.asset(
+                "assets/animations/ticket.json",
                 height: 150,
               ),
               const SizedBox(height: 16),
@@ -298,8 +298,8 @@ class _BookingPageState extends State<BookingPage> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 500),
-              child: Lottie.network(
-                "https://lottie.host/ab66acb3-efe3-4788-9a65-262944d434d2/RNQy0kq9P0.json",
+              child: Lottie.asset(
+                "assets/animations/booking.json",
                 height: 370,
                 width: double.infinity,
               ),
