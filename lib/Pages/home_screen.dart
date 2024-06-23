@@ -117,18 +117,18 @@ class _HomeScreenState extends State<HomeScreen>
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     children: [
-                      "USA",
+                      "Vietnam",
                       "Japan",
                       "India",
-                      "Europe",
                       "USA",
-                      "Japan",
-                      "India",
-                      "Europe",
-                      "USA",
-                      "Japan",
-                      "India",
-                      "Europe"
+                      "Switzerland",
+                      "Morocco",
+                      "Canada",
+                      "Italy",
+                      "Finland",
+                      "Norway",
+                      "France",
+                      "Canada"
                     ]
                         .map((city) => Container(
                             margin: const EdgeInsets.symmetric(horizontal: 8),
