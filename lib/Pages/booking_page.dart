@@ -14,6 +14,7 @@ class _BookingPageState extends State<BookingPage> {
   DateTime? _returnDate;
   int _adults = 2;
   int _children = 0;
+  String _selectedClass = 'Economy';
 
   Future<void> _selectDate(BuildContext context, bool isDeparture) async {
     final DateTime? picked = await showDatePicker(
@@ -206,6 +207,39 @@ class _BookingPageState extends State<BookingPage> {
                 const SizedBox(
                   height: 30,
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: DropdownButtonFormField<String>(
+                    value: _selectedClass,
+                    items: ['Economy', 'Business', 'First Class']
+                        .map((classType) => DropdownMenuItem<String>(
+                              value: classType,
+                              child: Text(classType),
+                            ))
+                        .toList(),
+                    onChanged: (newValue) {
+                      setState(() {
+                        _selectedClass = newValue!;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Class',
+                      labelStyle: const TextStyle(color: Colors.grey),
+                      prefixIcon: const Icon(Icons.class_),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
                 const Padding(
                   padding: EdgeInsets.only(right: 300.0),
                   child: Text(
@@ -273,7 +307,7 @@ class _BookingPageState extends State<BookingPage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 80,
+                  height: 60,
                 ),
                 ElevatedButton(
                   onPressed: () {
