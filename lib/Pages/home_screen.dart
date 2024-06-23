@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-
 import 'package:myapp/Widgets/blur_widget.dart';
 import 'package:myapp/Widgets/bottom_bar.dart';
-
 import 'package:myapp/Data/travel_destination.dart';
 import 'package:myapp/Widgets/destination_card.dart';
 
@@ -73,12 +71,23 @@ class _HomeScreenState extends State<HomeScreen>
                           style: TextStyle(
                               fontSize: 26, fontWeight: FontWeight.bold),
                         ),
-                        Text(
-                          "You're in India",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black87,
-                          ),
+                        Row(
+                          children: [
+                            Icon(
+                              Iconsax.location5,
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "You're in India",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -97,6 +106,7 @@ class _HomeScreenState extends State<HomeScreen>
                 TextField(
                   decoration: InputDecoration(
                     hintText: 'Where do you want to go',
+                    hintStyle: const TextStyle(color: Colors.black26),
                     prefixIcon: const Icon(
                       Iconsax.search_normal_1,
                     ),
@@ -116,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen>
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
                     children: [
                       "Vietnam",
                       "Japan",
