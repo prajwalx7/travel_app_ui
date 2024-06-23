@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myapp/Data/travel_destination.dart';
+import 'package:myapp/Pages/booking_page.dart';
 import 'package:myapp/Pages/home_screen.dart';
 import 'package:myapp/Widgets/blur_widget.dart';
 import 'package:myapp/Widgets/review_bar.dart';
@@ -145,7 +147,11 @@ class HomeDetailPage extends StatelessWidget {
                             Expanded(
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, '/bookingpage');
+                                  Get.to(
+                                    () => const BookingPage(),
+                                    transition: Transition.downToUp,
+                                    duration: const Duration(milliseconds: 700),
+                                  );
                                 },
                                 style: ElevatedButton.styleFrom(
                                   elevation: 0.0,

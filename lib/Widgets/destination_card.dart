@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import '../Data/travel_destination.dart';
@@ -141,13 +144,12 @@ class DestinationCard extends StatelessWidget {
                                 const Spacer(),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => HomeDetailPage(
-                                          destination: destination,
-                                        ),
-                                      ),
+                                    Get.to(
+                                      () => HomeDetailPage(
+                                          destination: destination),
+                                      transition: Transition.zoom,
+                                      duration:
+                                          const Duration(milliseconds: 300),
                                     );
                                   },
                                   child: Container(
