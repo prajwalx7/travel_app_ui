@@ -31,7 +31,7 @@ class TravelApp extends StatelessWidget {
         '/favouritesscreen': (context) =>  const FavoritesScreen(),
         '/ticketsscreen': (context) => const TicketsScreen(),
         '/userprofilescreen': (context) => const UserProfile(),
-        '/bookingpage' : (context) => const BookingPage(),
+        '/bookingscreen' : (context) => const BookingScreen(),
       },
     );
   }

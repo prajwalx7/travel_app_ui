@@ -1,11 +1,10 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myapp/Data/travel_destination.dart';
-import 'package:myapp/Screens/booking_screen.dart';
 import 'package:myapp/Screens/home_screen.dart';
+import 'package:myapp/Screens/search_flights_screen.dart';
 import 'package:myapp/Widgets/blur_widget.dart';
 import 'package:myapp/Widgets/review_bar.dart';
 import 'package:provider/provider.dart';
@@ -166,7 +165,7 @@ class HomeDetailPage extends StatelessWidget {
                               child: ElevatedButton(
                                 onPressed: () {
                                   Get.to(
-                                    () => const BookingPage(),
+                                    () => SearchFlightsScreen(),
                                     transition: Transition.downToUp,
                                     duration: const Duration(milliseconds: 700),
                                   );
@@ -181,7 +180,7 @@ class HomeDetailPage extends StatelessWidget {
                                   ),
                                 ),
                                 child: const Text(
-                                  'Book Now',
+                                  'Search Flights',
                                   style: TextStyle(fontSize: 18),
                                 ),
                               ),

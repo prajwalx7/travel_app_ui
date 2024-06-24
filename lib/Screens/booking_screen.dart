@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class BookingPage extends StatefulWidget {
-  const BookingPage({super.key});
+class BookingScreen extends StatefulWidget {
+  const BookingScreen({super.key});
 
   @override
-  _BookingPageState createState() => _BookingPageState();
+  _BookingScreenState createState() => _BookingScreenState();
 }
 
-class _BookingPageState extends State<BookingPage> {
+class _BookingScreenState extends State<BookingScreen> {
   DateTime? _departureDate;
   DateTime? _returnDate;
   int _adults = 2;
