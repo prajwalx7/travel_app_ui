@@ -5,8 +5,8 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
 import '../Data/travel_destination.dart';
-import '../Pages/home_detail_screen.dart';
-import '../Pages/favourites_provider.dart';
+import '../Screens/home_detail_screen.dart';
+import '../Screens/favourites_provider.dart';
 
 class DestinationCard extends StatelessWidget {
   final TravelDestination destination;

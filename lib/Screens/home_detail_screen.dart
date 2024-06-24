@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myapp/Data/travel_destination.dart';
-import 'package:myapp/Pages/booking_page.dart';
-import 'package:myapp/Pages/home_screen.dart';
+import 'package:myapp/Screens/booking_screen.dart';
+import 'package:myapp/Screens/home_screen.dart';
 import 'package:myapp/Widgets/blur_widget.dart';
 import 'package:myapp/Widgets/review_bar.dart';
 import 'package:provider/provider.dart';
-import '../Pages/favourites_provider.dart';
+import 'favourites_provider.dart';
 
 class HomeDetailPage extends StatelessWidget {
   const HomeDetailPage({super.key, required this.destination});
@@ -91,13 +91,16 @@ class HomeDetailPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Row(
                           children: [
                             Text(
                               destination.title,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 24,
+                                fontSize: 28,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -106,7 +109,7 @@ class HomeDetailPage extends StatelessWidget {
                               destination.price,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 20,
+                                fontSize: 24,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -116,32 +119,47 @@ class HomeDetailPage extends StatelessWidget {
                         Row(
                           children: [
                             const Icon(Icons.star,
-                                color: Colors.orange, size: 20),
+                                color: Colors.orange, size: 24),
                             const SizedBox(width: 4),
                             Text(
                               destination.rating,
-                              style: const TextStyle(color: Colors.white),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 16),
                             ),
                           ],
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          destination.location,
-                          style: const TextStyle(color: Colors.white),
+                        Row(
+                          children: [
+                            const Icon(
+                              Iconsax.location,
+                              color: Colors.white,
+                              size: 24,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              destination.location,
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 16),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 25),
                         Text(
                           destination.description,
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 16),
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 24),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             ReviewBar(),
                           ],
                         ),
-                        const SizedBox(height: 80),
+                        const SizedBox(height: 60),
                         Row(
                           children: [
                             Expanded(

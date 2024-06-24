@@ -38,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen>
         setState(() {});
       });
 
-    // Start the animation
     _controller.forward();
   }
 

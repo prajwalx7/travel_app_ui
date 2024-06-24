@@ -15,7 +15,7 @@ class TicketsScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 40, vertical: 22),
+        padding: EdgeInsets.symmetric(horizontal: 60, vertical: 22),
         child: TicketWidget(
           isCornerRounded: true,
           width: 350,
