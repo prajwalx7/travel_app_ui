@@ -27,7 +27,7 @@ class HomeDetailPage extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 45,
+            top: 55,
             left: 16,
             right: 16,
             child: Row(

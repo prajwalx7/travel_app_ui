@@ -96,245 +96,247 @@ class _BookingScreenState extends State<BookingScreen> {
         title: const Text("Book your ticket"),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 30),
-            child: TextField(
-              cursorColor: Colors.black,
-              decoration: InputDecoration(
-                labelText: "From",
-                labelStyle: const TextStyle(color: Colors.grey),
-                prefixIcon: const Icon(Icons.flight_takeoff),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(16),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 30),
+              child: TextField(
+                cursorColor: Colors.black,
+                decoration: InputDecoration(
+                  labelText: "From",
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  prefixIcon: const Icon(Icons.flight_takeoff),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextField(
-              cursorColor: Colors.black,
-              decoration: InputDecoration(
-                labelText: "To",
-                labelStyle: const TextStyle(color: Colors.grey),
-                prefixIcon: const Icon(Icons.flight_land),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(16),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: TextField(
+                cursorColor: Colors.black,
+                decoration: InputDecoration(
+                  labelText: "To",
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  prefixIcon: const Icon(Icons.flight_land),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      labelText: "Departure Date",
-                      labelStyle: const TextStyle(color: Colors.grey),
-                      prefixIcon: const Icon(Icons.date_range),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                    onTap: () => _selectDate(context, true),
-                    controller: TextEditingController(
-                      text: _departureDate != null
-                          ? "${_departureDate!.toLocal()}".split(' ')[0]
-                          : '',
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: TextField(
-                    readOnly: true,
-                    decoration: InputDecoration(
-                      labelText: "Return Date",
-                      labelStyle: const TextStyle(color: Colors.grey),
-                      prefixIcon: const Icon(Icons.date_range),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                    onTap: () => _selectDate(context, false),
-                    controller: TextEditingController(
-                      text: _returnDate != null
-                          ? "${_returnDate!.toLocal()}".split(' ')[0]
-                          : '',
-                    ),
-                  ),
-                ),
-              ],
+            const SizedBox(
+              height: 30,
             ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: DropdownButtonFormField<String>(
-              value: _selectedClass,
-              items: ['Economy', 'Business', 'First Class']
-                  .map((classType) => DropdownMenuItem<String>(
-                        value: classType,
-                        child: Text(classType),
-                      ))
-                  .toList(),
-              onChanged: (newValue) {
-                setState(() {
-                  _selectedClass = newValue!;
-                });
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        labelText: "Departure Date",
+                        labelStyle: const TextStyle(color: Colors.grey),
+                        prefixIcon: const Icon(Icons.date_range),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      onTap: () => _selectDate(context, true),
+                      controller: TextEditingController(
+                        text: _departureDate != null
+                            ? "${_departureDate!.toLocal()}".split(' ')[0]
+                            : '',
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: TextField(
+                      readOnly: true,
+                      decoration: InputDecoration(
+                        labelText: "Return Date",
+                        labelStyle: const TextStyle(color: Colors.grey),
+                        prefixIcon: const Icon(Icons.date_range),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      onTap: () => _selectDate(context, false),
+                      controller: TextEditingController(
+                        text: _returnDate != null
+                            ? "${_returnDate!.toLocal()}".split(' ')[0]
+                            : '',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: DropdownButtonFormField<String>(
+                value: _selectedClass,
+                items: ['Economy', 'Business', 'First Class']
+                    .map((classType) => DropdownMenuItem<String>(
+                          value: classType,
+                          child: Text(classType),
+                        ))
+                    .toList(),
+                onChanged: (newValue) {
+                  setState(() {
+                    _selectedClass = newValue!;
+                  });
+                },
+                decoration: InputDecoration(
+                  labelText: 'Class',
+                  labelStyle: const TextStyle(color: Colors.grey),
+                  prefixIcon: const Icon(Icons.class_),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(right: 300.0),
+              child: Text(
+                "Travellers",
+                style: TextStyle(color: Colors.grey),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  _buildCounterButton(
+                    icon: Icons.remove,
+                    onPressed: () {
+                      setState(() {
+                        if (_adults > 1) _adults--;
+                      });
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 1.0),
+                    child: Text(
+                      '$_adults Adults',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                  ),
+                  _buildCounterButton(
+                    icon: Icons.add,
+                    onPressed: () {
+                      setState(() {
+                        _adults++;
+                      });
+                    },
+                  ),
+                  const SizedBox(width: 5),
+                  _buildCounterButton(
+                    icon: Icons.remove,
+                    onPressed: () {
+                      setState(() {
+                        if (_children > 0) _children--;
+                      });
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      '$_children Child',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: _children == 0 ? Colors.grey : Colors.black),
+                    ),
+                  ),
+                  _buildCounterButton(
+                    icon: Icons.add,
+                    onPressed: () {
+                      setState(() {
+                        _children++;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                _showBookingDialog(context);
               },
-              decoration: InputDecoration(
-                labelText: 'Class',
-                labelStyle: const TextStyle(color: Colors.grey),
-                prefixIcon: const Icon(Icons.class_),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black87,
+                foregroundColor: Colors.white,
+                elevation: 0.0,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 150, vertical: 15),
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
+              child: const Text("Book Now"),
             ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(right: 300.0),
-            child: Text(
-              "Travellers",
-              style: TextStyle(color: Colors.grey),
+            const SizedBox(
+              height: 10,
             ),
-          ),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                _buildCounterButton(
-                  icon: Icons.remove,
-                  onPressed: () {
-                    setState(() {
-                      if (_adults > 1) _adults--;
-                    });
-                  },
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: SizedBox(
+                height: 234,
+                width: double.infinity,
+                child: Lottie.asset(
+                  "assets/animations/booking.json",
+                  fit: BoxFit.fill,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                  child: Text(
-                    '$_adults Adults',
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                ),
-                _buildCounterButton(
-                  icon: Icons.add,
-                  onPressed: () {
-                    setState(() {
-                      _adults++;
-                    });
-                  },
-                ),
-                const SizedBox(width: 5),
-                _buildCounterButton(
-                  icon: Icons.remove,
-                  onPressed: () {
-                    setState(() {
-                      if (_children > 0) _children--;
-                    });
-                  },
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text(
-                    '$_children Child',
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: _children == 0 ? Colors.grey : Colors.black),
-                  ),
-                ),
-                _buildCounterButton(
-                  icon: Icons.add,
-                  onPressed: () {
-                    setState(() {
-                      _children++;
-                    });
-                  },
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              _showBookingDialog(context);
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black87,
-              foregroundColor: Colors.white,
-              elevation: 0.0,
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 150, vertical: 15),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
               ),
             ),
-            child: const Text("Book Now"),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: 234,
-              width: double.infinity,
-              child: Lottie.asset(
-                "assets/animations/booking.json",
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
