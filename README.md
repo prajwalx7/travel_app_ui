@@ -1,8 +1,8 @@
 # Travel App UI
 
-  A travel app ui completly made with Flutter and Dart
+  A travel app ui completly made with Flutter and Dart.
 
-# Tools used: 
+# Tools used
   - **Provider - State Management**
   - **GetX - Routing/Navigation and Animation**
   - **Lottie - Animations**
