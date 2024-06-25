@@ -27,14 +27,17 @@ class SearchFlightsScreen extends StatelessWidget {
               departureCountry: 'India',
               departureIATA: 'BOM',
               departureTime: '08:00 AM',
-              landingCountry: 'USA',
-              landingIATA: 'JFK',
+              landingCountry: 'Vietnam',
+              landingIATA: 'HUI',
               landingTime: '13:00 PM',
             ),
             ElevatedButton(
               onPressed: () {
-                Get.to(() => const BookingScreen(),
-                    transition: Transition.downToUp);
+                Get.to(
+                  () => const BookingScreen(),
+                  transition: Transition.cupertinoDialog,
+                  duration: const Duration(milliseconds: 1000),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black87,
@@ -44,7 +47,57 @@ class SearchFlightsScreen extends StatelessWidget {
                 ),
               ),
               child: const Text("Book Now"),
-            )
+            ),
+            const FlightContainer(
+              departureCountry: 'India',
+              departureIATA: 'BOM',
+              departureTime: '08:00 AM',
+              landingCountry: 'Vietnam',
+              landingIATA: 'SGN',
+              landingTime: '13:00 PM',
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(
+                  () => const BookingScreen(),
+                  transition: Transition.cupertinoDialog,
+                  duration: const Duration(milliseconds: 1000),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black87,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: const Text("Book Now"),
+            ),
+            const FlightContainer(
+              departureCountry: 'India',
+              departureIATA: 'BOM',
+              departureTime: '08:00 AM',
+              landingCountry: 'Vietnam',
+              landingIATA: 'HAN',
+              landingTime: '13:00 PM',
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(
+                  () => const BookingScreen(),
+                  transition: Transition.cupertinoDialog,
+                  duration: const Duration(milliseconds: 1000),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black87,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: const Text("Book Now"),
+            ),
           ],
         ),
       ),

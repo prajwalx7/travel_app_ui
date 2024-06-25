@@ -46,7 +46,7 @@ class TicketData extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: 8.0),
                     child: Text(
-                      'BLR',
+                      'HUI',
                       style: TextStyle(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
@@ -92,8 +92,8 @@ class TicketData extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 20.0, left: 30.0, right: 30.0),
             child: Container(
-              width: 250.0,
-              height: 180.0,
+              width: 200.0,
+              height: 150.0,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/barcode.jpg'),
@@ -102,7 +102,7 @@ class TicketData extends StatelessWidget {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 5.0, left: 100.0, right: 75.0),
+            padding: EdgeInsets.only(top: 5.0, left: 75.0, right: 50.0),
             child: Text(
               '9230 2884 5163',
               style: TextStyle(

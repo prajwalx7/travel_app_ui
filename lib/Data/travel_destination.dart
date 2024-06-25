@@ -57,7 +57,7 @@ final List<TravelDestination> destinations = [
     location: " Japan",
     rating: " 4.7",
     description:
-        "Mount Fuji, Japan's highest peak at 3,776 meters, is an iconic and sacred volcano located on Honshu Island. Known for its perfectly symmetrical cone, Mount Fuji is a popular destination for climbers, especially during the summer months. Visitors can also enjoy scenic views from surrounding areas like Hakone and the Fuji Five Lakes. The mountain holds deep cultural significance and is often depicted in Japanese art and literature.",
+        "Mount Fuji, Japan's highest peak at 3,776 meters, is an iconic and sacred volcano located on Honshu Island. Known for its perfectly symmetrical cone, and is a popular destination for climbers, especially during the summer months. Visitors can also enjoy scenic views from surrounding areas like Hakone and the Fuji Five Lakes. The mountain holds deep cultural significance and is often depicted in Japanese art and literature.",
   ),
   TravelDestination(
     imagePath: "assets/photo2.jpg",
@@ -70,7 +70,7 @@ final List<TravelDestination> destinations = [
   ),
   TravelDestination(
     imagePath: "assets/photo3.jpg",
-    price: "\$500/Person",
+    price: "\$500\n/Person",
     title: " Statue of Liberty",
     location: "USA",
     rating: " 4.7",
@@ -84,7 +84,7 @@ final List<TravelDestination> destinations = [
     location: "India",
     rating: " 4.9",
     description:
-        "The Taj Mahal, a UNESCO World Heritage Site, is an exquisite white marble mausoleum located in Agra, India. Commissioned by Mughal Emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal, this 17th-century architectural masterpiece is renowned for its stunning symmetry, intricate carvings, and the serene reflection in its surrounding pools. The Taj Mahal is a testament to eternal love and is considered one of the New Seven Wonders of the World.",
+        "The Taj Mahal, a UNESCO World Heritage Site, is an exquisite white marble mausoleum located in Agra, India. Commissioned by Mughal Emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal, It is renowned for its stunning symmetry, intricate carvings, and the serene reflection in its surrounding pools. The Taj Mahal is a testament to eternal love and is considered one of the New Seven Wonders of the World.",
   ),
   TravelDestination(
       imagePath: "assets/photo7.jpg",
@@ -101,5 +101,5 @@ final List<TravelDestination> destinations = [
       location: "New Zealand",
       rating: " 4.8",
       description:
-          "Milford Sound is a breathtaking fjord located in Fiordland National Park, New Zealand. It is known for its towering Mitre Peak, cascading waterfalls such as Stirling Falls, and the deep blue waters of the fjord. The scenery here is dramatic and pristine, surrounded by lush rainforest and often shrouded in mist, creating a mystical atmosphere. Whether exploring by boat, hiking nearby trails, Milford Sound offers a mesmerizing escape into nature's untouched splendor."),
+          "Milford Sound is a breathtaking fjord located in Fiordland National Park, New Zealand. It is known for its towering Mitre Peak, cascading waterfalls such as Stirling Falls, and the deep blue waters of the fjord. The scenery here is surrounded by rainforest and often shrouded in mist, creating a mystical atmosphere. Whether exploring by boat, hiking nearby trails, Milford Sound offers a mesmerizing escape into nature's untouched splendor."),
 ];

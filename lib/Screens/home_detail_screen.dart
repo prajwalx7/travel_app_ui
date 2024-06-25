@@ -66,7 +66,7 @@ class HomeDetailPage extends StatelessWidget {
             ),
           ),
           DraggableScrollableSheet(
-            initialChildSize: 0.15,
+            initialChildSize: 0.18,
             minChildSize: 0.15,
             maxChildSize: 0.6,
             builder: (BuildContext context, ScrollController scrollController) {
@@ -90,9 +90,9 @@ class HomeDetailPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        // const SizedBox(
+                        //   height: 10,
+                        // ),
                         Row(
                           children: [
                             Text(
@@ -108,7 +108,7 @@ class HomeDetailPage extends StatelessWidget {
                               destination.price,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 24,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -158,14 +158,14 @@ class HomeDetailPage extends StatelessWidget {
                             ReviewBar(),
                           ],
                         ),
-                        const SizedBox(height: 60),
+                        const SizedBox(height: 30),
                         Row(
                           children: [
                             Expanded(
                               child: ElevatedButton(
                                 onPressed: () {
                                   Get.to(
-                                    () => SearchFlightsScreen(),
+                                    () => const SearchFlightsScreen(),
                                     transition: Transition.downToUp,
                                     duration: const Duration(milliseconds: 700),
                                   );
