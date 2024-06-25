@@ -1,28 +1,50 @@
+import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:myapp/Screens/booking_screen.dart';
 
 class SearchFlightsScreen extends StatelessWidget {
+  const SearchFlightsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffEBECF9),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Text(
-          'Available Flights',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
+        title: const Text('Search Flights'),
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 22.0),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            FlightContainer(),
-            SizedBox(height: 25),
-            FlightContainer(),
-            SizedBox(height: 25),
-            FlightContainer(),
+            const Text(
+              'Available Flights',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            const FlightContainer(
+              departureCountry: 'India',
+              departureIATA: 'BOM',
+              departureTime: '08:00 AM',
+              landingCountry: 'USA',
+              landingIATA: 'JFK',
+              landingTime: '13:00 PM',
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(() => const BookingScreen(),
+                    transition: Transition.downToUp);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black87,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: const Text("Book Now"),
+            )
           ],
         ),
       ),
@@ -31,34 +53,109 @@ class SearchFlightsScreen extends StatelessWidget {
 }
 
 class FlightContainer extends StatelessWidget {
-  const FlightContainer({super.key});
+  final String departureCountry;
+  final String departureIATA;
+  final String departureTime;
+  final String landingTime;
+  final String landingCountry;
+  final String landingIATA;
+
+  const FlightContainer({
+    super.key,
+    required this.departureCountry,
+    required this.departureIATA,
+    required this.departureTime,
+    required this.landingCountry,
+    required this.landingIATA,
+    required this.landingTime,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
       height: 150,
+      width: 400,
       decoration: BoxDecoration(
-        color: Colors.white,
+        border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
-            'Flight Details',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
+          // Left Side
+          Expanded(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CountryFlag.fromCountryCode(
+                      height: 20,
+                      width: 30,
+                      'IN',
+                      shape: const RoundedRectangle(3),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      departureCountry,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  departureIATA,
+                  style: const TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  departureTime,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
           ),
-          const SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const BookingScreen()),
-              );
-            },
-            child: const Text('Book Now'),
+          // Arrow Icon
+          const Icon(Icons.arrow_right_alt, size: 40),
+          // Right Side
+          Expanded(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CountryFlag.fromCountryCode(
+                      height: 20,
+                      width: 30,
+                      'US',
+                      shape: const RoundedRectangle(3),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      landingCountry,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  landingIATA,
+                  style: const TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  landingTime,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
           ),
         ],
       ),
