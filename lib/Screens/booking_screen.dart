@@ -322,17 +322,12 @@ class _BookingScreenState extends State<BookingScreen> {
             const SizedBox(
               height: 10,
             ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: SizedBox(
-                height: 234,
-                width: double.infinity,
-                child: Lottie.asset(
-                  "assets/animations/booking.json",
-                  fit: BoxFit.fill,
-                ),
+            SizedBox(
+              height: 234,
+              width: double.infinity,
+              child: Lottie.asset(
+                "assets/animations/booking.json",
+                fit: BoxFit.fill,
               ),
             ),
           ],
