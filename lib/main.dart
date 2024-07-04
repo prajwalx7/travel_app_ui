@@ -11,8 +11,7 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
-    create: (context) => FavoritesProvider(),
-    child: const TravelApp()));
+      create: (context) => FavoritesProvider(), child: const TravelApp()));
 }
 
 class TravelApp extends StatelessWidget {
@@ -28,10 +27,10 @@ class TravelApp extends StatelessWidget {
       home: const HomeScreen(),
       routes: {
         '/homescreen': (context) => const HomeScreen(),
-        '/favouritesscreen': (context) =>  const FavoritesScreen(),
+        '/favouritesscreen': (context) => const FavoritesScreen(),
         '/ticketsscreen': (context) => const TicketsScreen(),
         '/userprofilescreen': (context) => const UserProfile(),
-        '/bookingscreen' : (context) => const BookingScreen(),
+        '/bookingscreen': (context) => const BookingScreen(),
       },
     );
   }
