@@ -5,10 +5,10 @@ class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
 
   @override
-  _BookingScreenState createState() => _BookingScreenState();
+  BookingScreenState createState() => BookingScreenState();
 }
 
-class _BookingScreenState extends State<BookingScreen> {
+class BookingScreenState extends State<BookingScreen> {
   DateTime? _departureDate;
   DateTime? _returnDate;
   int _adults = 2;
@@ -50,7 +50,10 @@ class _BookingScreenState extends State<BookingScreen> {
               ),
               const Text(
                 "Yay! Tickets Confirmed.",
-                style: TextStyle(color: Colors.green),
+                style: TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
               ),
               Lottie.asset(
                 "assets/animations/ticket.json",
@@ -65,7 +68,6 @@ class _BookingScreenState extends State<BookingScreen> {
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
                   Navigator.of(context).pushReplacementNamed(
                     '/ticketsscreen',
                   );
@@ -92,8 +94,13 @@ class _BookingScreenState extends State<BookingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffEBECF9),
       appBar: AppBar(
-        title: const Text("Book your ticket"),
+        backgroundColor: const Color(0xffEBECF9),
+        title: const Text(
+          "Book your ticket",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

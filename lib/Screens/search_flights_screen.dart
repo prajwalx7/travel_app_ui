@@ -9,8 +9,13 @@ class SearchFlightsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xffEBECF9),
       appBar: AppBar(
-        title: const Text('Available Flights'),
+        backgroundColor: const Color(0xffEBECF9),
+        title: const Text(
+          'Available Flights',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       body: Padding(
@@ -99,6 +104,7 @@ class FlightContainer extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 20),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
+        color: Colors.white,
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(8),
       ),
