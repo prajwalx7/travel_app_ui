@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myapp/Widgets/blur_widget.dart';
 import 'package:myapp/Widgets/bottom_bar.dart';
@@ -56,11 +57,11 @@ class _HomeScreenState extends State<HomeScreen>
         bottom: false,
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Row(
+                Row(
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,21 +69,21 @@ class _HomeScreenState extends State<HomeScreen>
                         Text(
                           "Discovery",
                           style: TextStyle(
-                              fontSize: 26, fontWeight: FontWeight.bold),
+                              fontSize: 26.sp, fontWeight: FontWeight.bold),
                         ),
                         Row(
                           children: [
                             Icon(
                               Iconsax.location5,
-                              size: 16,
+                              size: 16.sp,
                             ),
                             SizedBox(
-                              width: 5,
+                              width: 5.w,
                             ),
                             Text(
                               "You're in India",
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 16.sp,
                                 color: Colors.black54,
                               ),
                             ),
@@ -90,18 +91,19 @@ class _HomeScreenState extends State<HomeScreen>
                         ),
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Column(
                       children: [
                         CircleAvatar(
-                          radius: 25,
-                          backgroundImage: AssetImage("assets/avatar.jpg"),
+                          radius: 25.r,
+                          backgroundImage:
+                              const AssetImage("assets/avatar.jpg"),
                         ),
                       ],
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 20.h),
                 TextField(
                   decoration: InputDecoration(
                     hintText: 'Where do you want to go',
@@ -110,18 +112,18 @@ class _HomeScreenState extends State<HomeScreen>
                       Iconsax.search_normal_1,
                     ),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(30.r),
                       borderSide: BorderSide.none,
                     ),
                     filled: true,
                     fillColor: Colors.white,
                   ),
                 ),
-                const SizedBox(
-                  height: 12,
+                SizedBox(
+                  height: 12.h,
                 ),
                 SizedBox(
-                  height: 35,
+                  height: 35.h,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
@@ -141,12 +143,12 @@ class _HomeScreenState extends State<HomeScreen>
                       "Canada"
                     ]
                         .map((city) => Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 8),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 8),
+                            margin: EdgeInsets.symmetric(horizontal: 8.w),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20.w, vertical: 8.h),
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.circular(16.r),
                             ),
                             child: Text(
                               city,
@@ -156,8 +158,8 @@ class _HomeScreenState extends State<HomeScreen>
                         .toList(),
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
+                SizedBox(
+                  height: 5.h,
                 ),
                 ListView.builder(
                   shrinkWrap: true,
@@ -180,12 +182,12 @@ class _HomeScreenState extends State<HomeScreen>
         child: BottomAppBar(
           color: Colors.transparent,
           elevation: 0,
-          height: 100,
+          height: 100.h,
           shape: const CircularNotchedRectangle(),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: BlurWidget(
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.circular(50.r),
               child: Container(
                 alignment: Alignment.center,
                 width: double.infinity,

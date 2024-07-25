@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:country_flags/country_flags.dart';
 import 'package:myapp/Screens/booking_screen.dart';
@@ -19,11 +20,11 @@ class SearchFlightsScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(16.0.r),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             FlightContainer(
               departureCountry: 'India',
               departureIATA: 'BOM',
@@ -39,7 +40,7 @@ class SearchFlightsScreen extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             FlightContainer(
               departureCountry: 'India',
               departureIATA: 'BOM',
@@ -55,7 +56,7 @@ class SearchFlightsScreen extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
             FlightContainer(
               departureCountry: 'India',
               departureIATA: 'BOM',
@@ -101,12 +102,12 @@ class FlightContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 20),
-      padding: const EdgeInsets.all(16),
+      margin: EdgeInsets.only(bottom: 20.h),
+      padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -123,36 +124,36 @@ class FlightContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CountryFlag.fromCountryCode(
-                          height: 20,
-                          width: 30,
+                          height: 20.h,
+                          width: 30.w,
                           'IN',
-                          shape: const RoundedRectangle(3),
+                          shape: RoundedRectangle(3.r),
                         ),
-                        const SizedBox(
-                          width: 5,
+                        SizedBox(
+                          width: 5.w,
                         ),
                         Text(
                           departureCountry,
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 20.sp, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: 5.h),
                     Text(
                       departureIATA,
-                      style: const TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16.sp),
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: 5.h),
                     Text(
                       departureTime,
-                      style: const TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16.sp),
                     ),
                   ],
                 ),
               ),
               // Arrow Icon
-              const Icon(Icons.arrow_right_alt, size: 40),
+              Icon(Icons.arrow_right_alt, size: 40.sp),
               // Right Side - Landing
               Expanded(
                 child: Column(
@@ -162,44 +163,44 @@ class FlightContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CountryFlag.fromCountryCode(
-                          height: 20,
-                          width: 30,
+                          height: 20.h,
+                          width: 30.w,
                           'VN',
-                          shape: const RoundedRectangle(3),
+                          shape: RoundedRectangle(3.r),
                         ),
-                        const SizedBox(
-                          width: 5,
+                        SizedBox(
+                          width: 5.w,
                         ),
                         Text(
                           landingCountry,
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 20.sp, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: 5.h),
                     Text(
                       landingIATA,
-                      style: const TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16.sp),
                     ),
-                    const SizedBox(height: 5),
+                    SizedBox(height: 5.h),
                     Text(
                       landingTime,
-                      style: const TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16.sp),
                     ),
                   ],
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           ElevatedButton(
             onPressed: onPressed,
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.black87,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(8.r),
               ),
             ),
             child: const Text("Book Now"),

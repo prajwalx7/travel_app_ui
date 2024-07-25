@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myapp/Data/ticket_data.dart';
 import 'package:ticket_widget/ticket_widget.dart';
 
@@ -14,13 +15,13 @@ class TicketsScreen extends StatelessWidget {
         title: const Text("Tickets"),
         centerTitle: true,
       ),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 60, vertical: 22),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
         child: TicketWidget(
           isCornerRounded: true,
-          width: 350,
-          height: 500,
-          child: TicketData(),
+          width: double.infinity,
+          height: 450.h,
+          child: const TicketData(),
         ),
       ),
     );

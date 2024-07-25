@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'favourites_provider.dart';
 import '../Widgets/destination_card.dart';
@@ -16,7 +17,7 @@ class FavoritesScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16),
+        padding: EdgeInsets.only(left: 16.w, right: 16.w),
         child: Consumer<FavoritesProvider>(
           builder: (context, favoritesProvider, child) {
             final favoriteDestinations = favoritesProvider.favorites;

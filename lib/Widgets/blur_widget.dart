@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BlurWidget extends StatelessWidget {
   final Widget child;
@@ -22,7 +23,7 @@ class BlurWidget extends StatelessWidget {
         filter: ImageFilter.blur(sigmaY: 20, sigmaX: 20),
         child: Container(
             padding: padding ??
-                const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+                EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
             decoration: const BoxDecoration(
               color: Colors.black12,
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomBarItrem extends StatelessWidget {
   final IconData icon;
@@ -16,14 +17,14 @@ class BottomBarItrem extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTap(),
       child: Container(
-        padding: const EdgeInsets.all(18),
+        padding: EdgeInsets.all(18.r),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: isSelected ? Colors.white : Colors.black12,
         ),
         child: Icon(
           icon,
-          size: 24,
+          size: 24.sp,
           color: isSelected ? Colors.black : Colors.white,
         ),
       ),

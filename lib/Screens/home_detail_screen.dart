@@ -1,5 +1,5 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:myapp/Data/travel_destination.dart';
@@ -27,15 +27,15 @@ class HomeDetailPage extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 55,
-            left: 16,
-            right: 16,
+            top: 55.h,
+            left: 16.w,
+            right: 16.w,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(30.r),
                     color: Colors.black.withOpacity(0.1),
                   ),
                   child: IconButton(
@@ -53,7 +53,7 @@ class HomeDetailPage extends StatelessWidget {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(30.r),
                     color: Colors.black.withOpacity(0.1),
                   ),
                   child: IconButton(
@@ -72,17 +72,17 @@ class HomeDetailPage extends StatelessWidget {
             builder: (BuildContext context, ScrollController scrollController) {
               return BlurWidget(
                 padding: EdgeInsets.zero,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30.r),
+                  topRight: Radius.circular(30.r),
                 ),
                 child: Container(
-                  padding: const EdgeInsets.all(16),
+                  padding: EdgeInsets.all(16.r),
                   decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.1),
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30.r),
+                      topRight: Radius.circular(30.r),
                     ),
                   ),
                   child: SingleChildScrollView(
@@ -97,68 +97,67 @@ class HomeDetailPage extends StatelessWidget {
                           children: [
                             Text(
                               destination.title,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 28,
+                                fontSize: 28.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             const Spacer(),
                             Text(
                               destination.price,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 20,
+                                fontSize: 20.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.h),
                         Row(
                           children: [
-                            const Icon(Icons.star,
-                                color: Colors.orange, size: 24),
-                            const SizedBox(width: 4),
+                            Icon(Icons.star, color: Colors.orange, size: 24.sp),
+                            SizedBox(width: 4.w),
                             Text(
                               destination.rating,
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 16),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 16.sp),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.h),
                         Row(
                           children: [
-                            const Icon(
+                            Icon(
                               Iconsax.location,
                               color: Colors.white,
-                              size: 24,
+                              size: 24.sp,
                             ),
-                            const SizedBox(
-                              width: 5,
+                            SizedBox(
+                              width: 5.w,
                             ),
                             Text(
                               destination.location,
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 16),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 16.sp),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 25),
+                        SizedBox(height: 25.h),
                         Text(
                           destination.description,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 16),
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 16.sp),
                         ),
-                        const SizedBox(height: 24),
+                        SizedBox(height: 24.h),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             ReviewBar(),
                           ],
                         ),
-                        const SizedBox(height: 30),
+                        SizedBox(height: 30.h),
                         Row(
                           children: [
                             Expanded(
@@ -172,21 +171,21 @@ class HomeDetailPage extends StatelessWidget {
                                 },
                                 style: ElevatedButton.styleFrom(
                                   elevation: 0.0,
-                                  minimumSize: const Size(70, 50),
+                                  minimumSize: Size(70.w, 50.h),
                                   backgroundColor: Colors.white,
                                   foregroundColor: Colors.black,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
+                                    borderRadius: BorderRadius.circular(30.r),
                                   ),
                                 ),
-                                child: const Text(
+                                child: Text(
                                   'Search Flights',
-                                  style: TextStyle(fontSize: 18),
+                                  style: TextStyle(fontSize: 18.sp),
                                 ),
                               ),
                             ),
-                            const SizedBox(
-                              width: 16,
+                            SizedBox(
+                              width: 16.w,
                             ),
                             Consumer<FavoritesProvider>(
                               builder: (context, favoritesProvider, child) {
@@ -205,7 +204,7 @@ class HomeDetailPage extends StatelessWidget {
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: Colors.white,
-                                      borderRadius: BorderRadius.circular(30),
+                                      borderRadius: BorderRadius.circular(30.r),
                                     ),
                                     child: IconButton(
                                       onPressed: () {
