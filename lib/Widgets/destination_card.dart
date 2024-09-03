@@ -94,7 +94,7 @@ class DestinationCard extends StatelessWidget {
                           ),
                         ),
                         padding: EdgeInsets.symmetric(
-                            vertical: 22.h, horizontal: 10.w),
+                            vertical: 12.h, horizontal: 10.w),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
