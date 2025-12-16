@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -7,174 +8,277 @@ import '../Data/travel_destination.dart';
 import '../Screens/home_detail_screen.dart';
 import '../Screens/favourites_provider.dart';
 
-class DestinationCard extends StatelessWidget {
+class DestinationCard extends StatefulWidget {
   final TravelDestination destination;
 
   const DestinationCard({super.key, required this.destination});
 
   @override
+  State<DestinationCard> createState() => _DestinationCardState();
+}
+
+class _DestinationCardState extends State<DestinationCard>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+  bool _isPressed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 150),
+      vsync: this,
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.98).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Consumer<FavoritesProvider>(
       builder: (context, favoritesProvider, child) {
-        final isFavorite = favoritesProvider.isFavorite(destination);
-        return Container(
-          width: double.maxFinite,
-          padding: EdgeInsets.only(top: 8.h),
-          margin: EdgeInsets.only(top: 16.h),
-          height: 300.h,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(destination.imagePath),
-              fit: BoxFit.cover,
-            ),
-            borderRadius: BorderRadius.circular(12.r),
-          ),
-          child: Stack(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.w),
-                child: Row(
-                  children: [
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
-                      decoration: BoxDecoration(
-                        color: Colors.black26,
-                        borderRadius: BorderRadius.circular(50.sp),
-                      ),
-                      child: Text(
-                        destination.price,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    const Spacer(),
-                    GestureDetector(
-                      onTap: () {
-                        if (isFavorite) {
-                          favoritesProvider.removeFavorite(destination);
-                        } else {
-                          favoritesProvider.addFavorite(destination);
-                        }
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(8.r),
-                        decoration: BoxDecoration(
-                          color: Colors.black26,
-                          borderRadius: BorderRadius.circular(50.r),
-                        ),
-                        child: Icon(
-                          isFavorite ? Iconsax.heart5 : Iconsax.heart,
-                          color: isFavorite ? Colors.red : Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+        final isFavorite = favoritesProvider.isFavorite(widget.destination);
+
+        return GestureDetector(
+          onTapDown: (_) {
+            setState(() => _isPressed = true);
+            _animationController.forward();
+          },
+          onTapUp: (_) {
+            setState(() => _isPressed = false);
+            _animationController.reverse();
+          },
+          onTapCancel: () {
+            setState(() => _isPressed = false);
+            _animationController.reverse();
+          },
+          child: ScaleTransition(
+            scale: _scaleAnimation,
+            child: Container(
+              width: double.maxFinite,
+              margin: EdgeInsets.symmetric(horizontal: 4.w, vertical: 8.h),
+              height: 320.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.r),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 20,
+                    offset: const Offset(0, 10),
+                    spreadRadius: 0,
+                  ),
+                ],
               ),
-              Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(top: 162.h),
-                    height: 130.h,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(12.r),
-                        bottomRight: Radius.circular(12.r),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.r),
+                child: Stack(
+                  children: [
+                    // Background Image
+                    Positioned.fill(
+                      child: Image.asset(
+                        widget.destination.imagePath,
+                        fit: BoxFit.cover,
                       ),
+                    ),
+
+                    // Top Section - Price and Favorite
+                    Positioned(
+                      top: 12.h,
+                      left: 12.w,
+                      right: 12.w,
+                      child: Row(
+                        children: [
+                          // Price Tag with Glassmorphism
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(30.r),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 16.w,
+                                  vertical: 8.h,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.2),
+                                  borderRadius: BorderRadius.circular(30.r),
+                                  border: Border.all(
+                                    color: Colors.white.withOpacity(0.3),
+                                    width: 1.5,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      Icons.attach_money,
+                                      color: Colors.white,
+                                      size: 18.sp,
+                                    ),
+                                    Text(
+                                      widget.destination.price,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w600,
+                                        shadows: [
+                                          Shadow(
+                                            color:
+                                                Colors.black.withOpacity(0.3),
+                                            offset: const Offset(0, 1),
+                                            blurRadius: 2,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          const Spacer(),
+
+                          // Favorite Button with Glassmorphism
+                          _buildFavoriteButton(isFavorite, favoritesProvider),
+                        ],
+                      ),
+                    ),
+
+                    // Bottom Section - Gradient Overlay with Info
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
                       child: Container(
+                        height: 160.h,
                         decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [Colors.transparent, Colors.black],
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.transparent,
+                              Colors.black.withOpacity(0.7),
+                              Colors.black.withOpacity(0.9),
+                            ],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
-                          ),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(12.r),
-                            bottomRight: Radius.circular(12.r),
+                            stops: const [0.0, 0.5, 1.0],
                           ),
                         ),
                         padding: EdgeInsets.symmetric(
-                            vertical: 12.h, horizontal: 10.w),
+                          horizontal: 16.w,
+                          vertical: 16.h,
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Row(
-                              children: [
-                                Text(
-                                  destination.title,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24.sp,
-                                    fontWeight: FontWeight.bold,
+                            // Title
+                            Text(
+                              widget.destination.title,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 26.sp,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 0.5,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black.withOpacity(0.5),
+                                    offset: const Offset(0, 2),
+                                    blurRadius: 4,
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
+                            // SizedBox(height: 6.h),
+
+                            // Location
                             Row(
                               children: [
                                 Icon(
                                   Iconsax.location,
-                                  size: 18.sp,
-                                  color: Colors.white,
+                                  size: 16.sp,
+                                  color: Colors.white.withOpacity(0.9),
                                 ),
-                                Text(
-                                  destination.location,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w400,
+                                SizedBox(width: 4.w),
+                                Expanded(
+                                  child: Text(
+                                    widget.destination.location,
+                                    style: TextStyle(
+                                      color: Colors.white.withOpacity(0.9),
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ],
                             ),
+                            SizedBox(height: 6.h),
+
+                            // Rating and Explore Button
                             Row(
                               children: [
-                                Icon(
-                                  Iconsax.star1,
-                                  size: 22.sp,
-                                  color: Colors.yellow,
-                                ),
-                                Text(
-                                  destination.rating,
-                                  style: const TextStyle(
-                                    color: Colors.white,
+                                // Rating
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 10.w,
+                                    vertical: 6.h,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.amber.withOpacity(0.2),
+                                    borderRadius: BorderRadius.circular(20.r),
+                                    border: Border.all(
+                                      color: Colors.amber.withOpacity(0.3),
+                                      width: 1,
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Iconsax.star1,
+                                        size: 16.sp,
+                                        color: Colors.amber,
+                                      ),
+                                      SizedBox(width: 4.w),
+                                      Text(
+                                        widget.destination.rating,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13.sp,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 const Spacer(),
+
+                                // Explore Button
                                 GestureDetector(
-                                  onTap: () {
-                                    Get.to(
-                                      () => HomeDetailPage(
-                                          destination: destination),
-                                      transition: Transition.zoom,
-                                      duration:
-                                          const Duration(milliseconds: 300),
-                                    );
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 16.w, vertical: 8.h),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Text(
-                                          "Explore",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        SizedBox(width: 8.w),
-                                        Icon(
-                                          Iconsax.arrow_circle_right4,
-                                          size: 20.sp,
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                    ),
+                                  onTap: () => Get.to(
+                                    () => HomeDetailPage(
+                                        destination: widget.destination),
+                                    transition: Transition.fadeIn,
+                                    duration: const Duration(milliseconds: 400),
                                   ),
+                                  child: Container(
+                                      padding: EdgeInsets.all(8.r),
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child:
+                                          const Icon(Icons.arrow_forward_ios)),
                                 ),
                               ],
                             ),
@@ -182,13 +286,63 @@ class DestinationCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ],
+            ),
           ),
         );
       },
+    );
+  }
+
+  Widget _buildFavoriteButton(bool isFavorite, FavoritesProvider provider) {
+    return GestureDetector(
+      onTap: () {
+        if (isFavorite) {
+          provider.removeFavorite(widget.destination);
+        } else {
+          provider.addFavorite(widget.destination);
+        }
+      },
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30.r),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+            padding: EdgeInsets.all(10.r),
+            decoration: BoxDecoration(
+              color: isFavorite
+                  ? Colors.red.withOpacity(0.3)
+                  : Colors.white.withOpacity(0.2),
+              borderRadius: BorderRadius.circular(30.r),
+              border: Border.all(
+                color: isFavorite
+                    ? Colors.red.withOpacity(0.5)
+                    : Colors.white.withOpacity(0.3),
+                width: 1.5,
+              ),
+            ),
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder: (child, animation) {
+                return ScaleTransition(
+                  scale: animation,
+                  child: child,
+                );
+              },
+              child: Icon(
+                isFavorite ? Iconsax.heart5 : Iconsax.heart,
+                key: ValueKey(isFavorite),
+                color: isFavorite ? Colors.red : Colors.white,
+                size: 22.sp,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
